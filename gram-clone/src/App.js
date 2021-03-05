@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import gramCloneLogo from "./Images/gramCloneLogo.png";
 
 function App() {
   return (
     <div>
-      <h1>The Gram Clone</h1>
+       <img src={gramCloneLogo} alt="logo" />
+      
     </div>
   )
 }
