@@ -1,11 +1,23 @@
  import React from 'react';
 import './App.css';
-import gramCloneLogo from "./Images/gramCloneLogo.png";
+import Header from "./Components/Header"
+
 
 function App() {
   return (
-    <div>
-       <img src={gramCloneLogo} alt="logo" />
+    <div className="app">
+      <div className="app_header">
+      <Header/>
+
+      </div>
+      
+       
+
+         
+           
+       {/* POSTS */}
+       {/* POSTS */}
+       
       
     </div>
   )
