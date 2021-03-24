@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import './App.css';
 import gramCloneLogo from "./Images/gramCloneLogo.png";
 
