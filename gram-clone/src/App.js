@@ -1,27 +1,19 @@
- import React from 'react';
-import './App.css';
-import Header from "./Components/Header"
-
+import React from "react";
+import "./App.css";
+import Header from "./Components/Header";
+import Posts from "./Components/Posts";
 
 function App() {
   return (
     <div className="app">
       <div className="app_header">
-      <Header/>
-
+        <Header />
       </div>
-      
-       
+      <Posts/>
 
-         
-           
-       {/* POSTS */}
-       {/* POSTS */}
-       
       
     </div>
-  )
+  );
 }
 
-export default App
-
+export default App;
