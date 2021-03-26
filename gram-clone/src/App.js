@@ -10,6 +10,8 @@ function App() {
         <Header />
       </div>
       <Posts/>
+      <Posts/>
+      <Posts/>
 
       
     </div>
