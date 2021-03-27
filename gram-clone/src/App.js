@@ -24,6 +24,7 @@ function App() {
       <div className="app_header">
         <Header />
       </div>
+      
       {posts.map((posts) => (
         <Posts
           username={posts.username}
