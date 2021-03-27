@@ -1,23 +1,26 @@
 import React from "react";
 import "./Posts.css";
-import gramClone from "../Images/gramClone.png";
+
 import Avatar from "@material-ui/core/Avatar";
 
-function Posts() {
+function Posts({username, caption, imageUrl}) {
   return (
     <div className="posts">
-      <div className="posts_header">
+        <div className="posts_header">
         <Avatar
-          className="posts_avatar"
-          alt="AjaxCodes"
-          src="/static/images/avatar/1.jpg"
-        />
-        <h3>username</h3>
-      </div>
+        className="posts_avatar"
+        alt="AjaxCodes"
+        src="/static/images/avatar/1.jpg"
+      />
+      <h1>{username}</h1>
+      
+     
 
-      <img className="posts_image" src={gramClone} alt="logo" />
-      <h4 className="posts_text">
-        <strong>AjaxCodes</strong> welcome to theGramClone
+        </div>
+      
+        <img className="posts_image" src={imageUrl} alt="" />
+       <h4 className="posts_text">
+        <strong>{username}</strong>  {caption}
       </h4>
     </div>
   );
