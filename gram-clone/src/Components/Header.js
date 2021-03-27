@@ -3,6 +3,8 @@ import "./Header.css";
 import gramCloneLogo from "../Images/gramCloneLogo.png";
 
 function Header() {
+
+    
     return (
         <div className="header">
              <img className="header_image" 

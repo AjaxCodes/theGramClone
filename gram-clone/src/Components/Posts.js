@@ -1,9 +1,11 @@
 import React from "react";
 import "./Posts.css";
-
 import Avatar from "@material-ui/core/Avatar";
 
 function Posts({username, caption, imageUrl}) {
+
+
+
   return (
     <div className="posts">
         <div className="posts_header">
