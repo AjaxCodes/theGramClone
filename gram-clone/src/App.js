@@ -9,9 +9,14 @@ function App() {
 
   useEffect(() => {
     db.collection("posts").onSnapshot((snapshot) => {
-      setPosts(snapshot.docs.map((doc) => doc.data()));
+      setPosts(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          post: doc.data(),
+        }))
+      );
     });
-    // line 25 section will function like a for loop everytime a new post is made,
+    // line 11 section will function like a for loop everytime a new post is made,
     // to updated the database with the new posts
   }, []);
 
@@ -21,8 +26,9 @@ function App() {
         <Header />
       </div>
 
-      {posts.map((posts) => (
+      {posts.map(({ id, post }) => (
         <Posts
+          key={id}
           username={posts.username}
           caption={posts.caption}
           imageUrl={posts.imageUrl}
