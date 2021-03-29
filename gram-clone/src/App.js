@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Posts from "./Components/Posts";
+import Post from "./Components/Post";
 import { db } from "./firebase";
 
 function App() {
@@ -16,8 +16,6 @@ function App() {
         }))
       );
     });
-    // line 11 section will function like a for loop everytime a new post is made,
-    // to updated the database with the new posts
   }, []);
 
   return (
@@ -27,11 +25,11 @@ function App() {
       </div>
 
       {posts.map(({ id, post }) => (
-        <Posts
+        <Post
           key={id}
-          username={posts.username}
-          caption={posts.caption}
-          imageUrl={posts.imageUrl}
+          username={post.username}
+          caption={post.caption}
+          imageUrl={post.imageUrl}
         />
       ))}
     </div>
