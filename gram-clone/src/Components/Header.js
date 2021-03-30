@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.css";
 import gramClone from "../Images/gramClone.png";
 import gramCloneLogo from "../Images/gramCloneLogo.png";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button, Input } from "@material-ui/core";
+import { auth } from "../firebase";
 
 function getModalStyle() {
   const top = 50;
@@ -31,20 +32,55 @@ function Header() {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = useState(false);
+  // ^^ modal
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState(null);
+  // ^^ sign in/up form within modal
 
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // user has logged in
+        console.log(authUser);
+        setUser(authUser);
+      } else {
+        // logged out
+        setUser(null);
+      }
+    });
 
-  const signUp = (event) => {};
+    return () => {
+      unsubscribe();
+      // cleanup actions
+    };
+  }, [user, username]);
+  // ^^ persistant due to cookie tracking
+
+  const signUp = (event) => {
+    event.preventDefault();
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        return authUser.user.updateProfile({
+          displayName: username,
+        });
+      })
+      .catch((error) => alert(error.message));
+  };
 
   return (
     <div className="header">
-      <Modal open={open} onClose={() => setOpen(false)}>
+      <Modal
+        className="header_modal"
+        open={open}
+        onClose={() => setOpen(false)}
+      >
         <div style={modalStyle} className={classes.paper}>
-            <form>
+          <form className="header_signup">
             <center>
-            <img src={gramCloneLogo} alt="gram clone logo" />
+              <img src={gramCloneLogo} alt="gram clone logo" />
             </center>
             <Input
               placeholder="username"
@@ -64,13 +100,13 @@ function Header() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button onClick={signUp}>Sign Up</Button>
-          
-
-            </form>
-         
+            <Button type="submit" onClick={signUp}>
+              Sign Up
+            </Button>
+          </form>
         </div>
       </Modal>
+
       <img className="header_image" src={gramClone} alt="logo" />
 
       <Button onClick={() => setOpen(true)}>Sign Up</Button>
