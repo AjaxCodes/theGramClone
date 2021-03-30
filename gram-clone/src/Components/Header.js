@@ -108,8 +108,11 @@ function Header() {
       </Modal>
 
       <img className="header_image" src={gramClone} alt="logo" />
-
-      <Button onClick={() => setOpen(true)}>Sign Up</Button>
+      {user ? (
+        <Button onClick={() => auth.signOut()}>Sign Out</Button>
+      ) : (
+        <Button onClick={() => setOpen(true)}>Sign Up</Button>
+      )}
     </div>
   );
 }
