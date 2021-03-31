@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
+import AddPost from "./AddPost";
+import PostAddIcon from '@material-ui/icons/PostAdd';
 import gramClone from "../Images/gramClone.png";
 import gramCloneLogo from "../Images/gramCloneLogo.png";
 import { makeStyles } from "@material-ui/core/styles";
@@ -143,8 +145,11 @@ function Header() {
           </form>
         </div>
       </Modal>
-
+      <PostAddIcon />
       <img className="header_image" src={gramClone} alt="logo" />
+      
+
+      
       {user ? (
         <Button onClick={() => auth.signOut()}>Sign Out</Button>
       ) : (

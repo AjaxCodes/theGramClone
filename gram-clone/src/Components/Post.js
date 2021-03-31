@@ -1,5 +1,5 @@
 import React from "react";
-import "./Posts.css";
+import "./Post.css";
 import Avatar from "@material-ui/core/Avatar";
 
 
