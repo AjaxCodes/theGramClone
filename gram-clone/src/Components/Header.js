@@ -145,9 +145,9 @@ function Header() {
           </form>
         </div>
       </Modal>
-      <PostAddIcon />
-      <img className="header_image" src={gramClone} alt="logo" />
       
+      <img className="header_image" src={gramClone} alt="logo" />
+      <PostAddIcon />
 
       
       {user ? (
