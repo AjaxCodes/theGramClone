@@ -22,6 +22,10 @@ function AddPost() {
                   (snapshot.bytesTransferred / snapshot.totalBytes) * 100
               );
               setProgress(progress);
+          },
+          (error) => {
+              console.log(error);
+              alert(error.message);
           }
       )
 

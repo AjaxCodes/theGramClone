@@ -147,7 +147,7 @@ function Header() {
       </Modal>
       
       <img className="header_image" src={gramClone} alt="logo" />
-      <PostAddIcon />
+      <AddPost/>
 
       
       {user ? (
