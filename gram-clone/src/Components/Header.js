@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
 import AddPost from "./AddPost";
-import PostAddIcon from '@material-ui/icons/PostAdd';
+import PostAddIcon from "@material-ui/icons/PostAdd";
 import gramClone from "../Images/gramClone.png";
 import gramCloneLogo from "../Images/gramCloneLogo.png";
 import { makeStyles } from "@material-ui/core/styles";
@@ -75,13 +75,19 @@ function Header() {
   const signIn = (event) => {
     event.preventDefault();
     auth
-    .signInWithEmailAndPassword(email, password)
-    .catch((error) => alert(error.message))
-    setOpenSignIn(false)
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => alert(error.message));
+    setOpenSignIn(false);
   };
 
   return (
     <div className="header">
+       {user.displayName ? (
+        <AddPost username={user.displayName} />
+      ) : (
+        <h4> login to add posts</h4>
+      )}
+      
       <Modal
         className="header_modal"
         open={open}
@@ -145,11 +151,11 @@ function Header() {
           </form>
         </div>
       </Modal>
-      
-      <img className="header_image" src={gramClone} alt="logo" />
-      <AddPost/>
 
-      
+      <img className="header_image" src={gramClone} alt="logo" />
+
+     
+
       {user ? (
         <Button onClick={() => auth.signOut()}>Sign Out</Button>
       ) : (
